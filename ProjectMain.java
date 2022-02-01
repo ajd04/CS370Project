@@ -1,8 +1,9 @@
+import java.io.IOException;
 import java.util.*;
 
 public class ProjectMain {
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         
         System.out.println("Welcome to CARROTODO. Enter /help for a list of commands");
 
@@ -13,6 +14,12 @@ public class ProjectMain {
 
             ProjectHelp h = new ProjectHelp();
             h.helpFunction();
+        }
+
+        if(input.equals("/lc")){
+
+            CreateFunction c = new CreateFunction();
+            c.CreateList();
         }
     }
 
