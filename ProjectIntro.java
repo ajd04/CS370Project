@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class ProjectMainIntro {
+public class ProjectIntro {
     
-    public static void main(String[] args){
+    public void PrintIntro(){
 
         final String ANSI_RESET = "\u001B[0m";
         final String ANSI_YELLOW = "\u001B[33m";
@@ -10,13 +10,6 @@ public class ProjectMainIntro {
 
         System.out.println("Welcome to " + ANSI_BOLD + "CARROTODO" + ANSI_RESET + ".\nEnter " + ANSI_YELLOW + "/help" + ANSI_RESET + " for a list of commands.");
         
-        Scanner tokens = new Scanner(System.in);
-        String input = tokens.nextLine();
-
-        if(input.equals("/help")){
-
-            ProjectHelp h = new ProjectHelp();
-            h.helpFunction();
-        }
+        
     }
 }

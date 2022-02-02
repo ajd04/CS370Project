@@ -3,24 +3,33 @@ import java.util.*;
 
 public class ProjectMain {
     
+    private static String input;
     public static void main(String[] args) throws IOException{
         
-        System.out.println("Welcome to CARROTODO. Enter /help for a list of commands");
+        ProjectIntro i = new ProjectIntro();
+        i.PrintIntro();
 
-        Scanner tokens = new Scanner(System.in);
-        String input = tokens.next();
+        do{
+            Scanner tokens = new Scanner(System.in);
+            input = tokens.next();
 
-        if(input.equals("/help")){
+            if(input.equals("/help")){
 
-            ProjectHelp h = new ProjectHelp();
-            h.helpFunction();
+                ProjectHelp h = new ProjectHelp();
+                h.HelpFunction();
+            }
+
+            else if(input.equals("/lc")){
+
+                CreateFunction c = new CreateFunction();
+                c.CreateList();
+            }
         }
+        while(!input.equals("/exit"));
+        
+        if(input.equals("/exit")){
 
-        if(input.equals("/lc")){
-
-            CreateFunction c = new CreateFunction();
-            c.CreateList();
+            System.exit(0);
         }
     }
-
 }
