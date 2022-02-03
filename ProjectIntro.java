@@ -10,7 +10,7 @@ public class ProjectIntro {
         final String ANSI_ITALICS = "\u001B[3m";
 
         System.out.println("Welcome to " + ANSI_BOLD + "CARROTODO" + ANSI_RESET + ".");
-        System.out.println(ANSI_ITALICS + "Made by Matthew Gabler, Michael Johnson, Adam DeLucia, and Gregory Patti\n" + ANSI_RESET);
+        System.out.println(ANSI_ITALICS + "Made by Adam DeLucia, Matthew Gabler, Michael Johnson, and Gregory Patti\n" + ANSI_RESET);
         System.out.println("Enter " + ANSI_YELLOW + "/help" + ANSI_RESET + " for a list of commands.");
         
         
