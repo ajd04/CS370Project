@@ -4,6 +4,8 @@ import java.util.*;
 
 public class CreateFunction {
     
+    public String listName;
+
     //This variable stores the user's home directory
     private String userHomeFolder = System.getProperty("user.home"); 
 
@@ -14,7 +16,7 @@ public class CreateFunction {
 
         Scanner input = new Scanner(System.in);
 
-        String listName = input.next();
+         listName = input.next();
 
         File file = new File(userHomeFolder, listName + ".txt");
 

@@ -24,6 +24,12 @@ public class ProjectMain {
                 CreateFunction c = new CreateFunction();
                 c.CreateList();
             }
+
+            else if(input.equals("/ladd")){
+
+                AddFunction a = new AddFunction();
+                a.WriteFunction();
+            }
         }
         while(!input.equals("/exit"));
         
