@@ -30,6 +30,14 @@ public class ProjectMain {
                 AddFunction a = new AddFunction();
                 a.WriteFunction();
             }
+
+            else{
+                
+                if(!input.equals("/exit")){
+                    
+                    System.out.println("Invalid command!\n");
+                }
+            }
         }
         while(!input.equals("/exit"));
         

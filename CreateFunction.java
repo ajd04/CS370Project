@@ -7,12 +7,12 @@ public class CreateFunction {
     public String listName;
 
     //This variable stores the user's home directory
-    private String userHomeFolder = System.getProperty("user.home"); 
+    public String userHomeFolder = System.getProperty("user.home"); 
 
     //Method for creating a text file
     public void CreateList() throws IOException{
 
-        System.out.println("Enter file name: ");
+        System.out.println("Enter file name (w/o extension): ");
 
         Scanner input = new Scanner(System.in);
 
