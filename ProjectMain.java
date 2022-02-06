@@ -31,6 +31,11 @@ public class ProjectMain {
                 a.WriteFunction();
             }
 
+            else if(input.equals("/itemcomp")){
+                ItemCompFunction m = new ItemCompFunction();
+                m.ItemComp();
+            }
+
             else{
                 
                 if(!input.equals("/exit")){
