@@ -38,7 +38,7 @@ public class AddFunction extends CreateFunction {
 
             //Open the file for writing
             BufferedWriter writer = new BufferedWriter(new FileWriter(userHomeFolder + '\\' + listName + ".txt" , true));
-        
+
             //Prompt user for task name and store it
             System.out.println("Enter task name: ");
 
@@ -47,7 +47,7 @@ public class AddFunction extends CreateFunction {
             String taskName = input.nextLine();
 
             //Write the task to the file
-            writer.write(taskName);
+            writer.write("\n"+ taskName + " - ");
 
             //Prompt user for item priority and store it
             while(validPriority == false){
@@ -60,7 +60,7 @@ public class AddFunction extends CreateFunction {
                 if(priority == 'l' || priority == 'L' || priority == 'm' || priority == 'M' || priority == 'h' || priority == 'H'){
 
                     //Write priority
-                    writer.write(priority);
+                    writer.write(priority + " - ");
                     validPriority = true;
                 }
                 else{
@@ -82,7 +82,7 @@ public class AddFunction extends CreateFunction {
                 if(difficulty == 'e' || difficulty == 'E' || difficulty == 'm' || difficulty == 'M' || difficulty == 'h' || difficulty == 'H'){
 
                     //Write difficulty level
-                    writer.write(difficulty);
+                    writer.write(difficulty + " - ");
                     validDifficulty = true;
                 }
                 else{
