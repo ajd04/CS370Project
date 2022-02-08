@@ -47,7 +47,7 @@ public class AddFunction extends CreateFunction {
             String taskName = input.nextLine();
 
             //Write the task to the file
-            writer.write("\n"+ taskName + " - ");
+            writer.write("\n"+ "Task Name: "+ taskName + " - ");
 
             //Prompt user for item priority and store it
             while(validPriority == false){
@@ -60,7 +60,7 @@ public class AddFunction extends CreateFunction {
                 if(priority == 'l' || priority == 'L' || priority == 'm' || priority == 'M' || priority == 'h' || priority == 'H'){
 
                     //Write priority
-                    writer.write(priority + " - ");
+                    writer.write("Priority Level: " + priority + " - ");
                     validPriority = true;
                 }
                 else{
@@ -82,7 +82,7 @@ public class AddFunction extends CreateFunction {
                 if(difficulty == 'e' || difficulty == 'E' || difficulty == 'm' || difficulty == 'M' || difficulty == 'h' || difficulty == 'H'){
 
                     //Write difficulty level
-                    writer.write(difficulty + " - ");
+                    writer.write("Difficulty Level: " + difficulty + " - ");
                     validDifficulty = true;
                 }
                 else{
@@ -127,7 +127,7 @@ public class AddFunction extends CreateFunction {
                     }
 
                     String dueDay = dateFormat.format(date2);
-                    writer.write(dueDay);
+                    writer.write("Due Date: " + dueDay);
                     writer.close();
                     System.out.println("Item saved!");
                 }
