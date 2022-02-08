@@ -25,6 +25,12 @@ public class ProjectMain {
                 c.CreateList();
             }
 
+            else if(input.equals("/ls")){
+
+                ShowListFunction s = new ShowListFunction();
+                s.ShowList();
+            }
+
             else if(input.equals("/ladd")){
 
                 AddFunction a = new AddFunction();
@@ -33,7 +39,7 @@ public class ProjectMain {
 
             else if(input.equals("/itemcomp")){
                 ItemCompFunction m = new ItemCompFunction();
-                m.ItemComp();
+               m.ItemComp();
             }
 
             else{
