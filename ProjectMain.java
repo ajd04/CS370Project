@@ -33,7 +33,11 @@ public class ProjectMain {
 
             else if(input.equals("/itemcomp")){
                 ItemCompFunction m = new ItemCompFunction();
+<<<<<<< HEAD
                m.ItemComp();
+=======
+                m.ItemComp();
+>>>>>>> d010f1ca49ede2065b8bef07579356e65eacf72d
             }
 
             else{
