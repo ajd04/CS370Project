@@ -7,6 +7,9 @@ import java.util.*;
 
 public class AddFunction extends CreateFunction {
 
+    ArrayList<String> taskArrayList = new ArrayList<String>();
+    String taskName;
+
     public void WriteFunction() throws IOException{
 
         boolean pException = true;
@@ -44,7 +47,8 @@ public class AddFunction extends CreateFunction {
 
             input = new Scanner(System.in);
 
-            String taskName = input.nextLine();
+            taskName = input.nextLine();
+            taskArrayList.add(taskName);
 
             //Write the task to the file
             writer.write("\n"+ taskName + " - ");

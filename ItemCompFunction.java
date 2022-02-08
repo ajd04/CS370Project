@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-public class ItemCompFunction extends CreateFunction {
+public class ItemCompFunction extends AddFunction {
 
     public void ItemComp() throws IOException {
 
@@ -17,6 +17,14 @@ public class ItemCompFunction extends CreateFunction {
 
         //Open the file for writing
         BufferedWriter writer = new BufferedWriter(new FileWriter(userHomeFolder + '\\' + listName + ".txt" , true));
+
+
+        
+        // Iterating using for loop
+        for (int i = 0; i < taskArrayList.size(); i++) {
+            System.out.println(taskArrayList.get(i));
+
+        }
 
 
         
