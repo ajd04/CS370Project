@@ -15,10 +15,15 @@ public class ShowListFunction {
 
         File file = new File(userHomeFolder, listName + ".txt");
 
-        Scanner sc = new Scanner(file);
+        if(file.exists()){
+            Scanner sc = new Scanner(file);
 
-        while(sc.hasNextLine())
-            System.out.println(sc.nextLine());
+            while(sc.hasNextLine())
+                System.out.println(sc.nextLine());
+        }
+        else{
+            System.out.println("No such file exists!\n");
+        }
 
     }
 
