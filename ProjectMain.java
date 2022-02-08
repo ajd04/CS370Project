@@ -25,6 +25,12 @@ public class ProjectMain {
                 c.CreateList();
             }
 
+            else if(input.equals("/ls")){
+
+                ShowListFunction s = new ShowListFunction();
+                s.ShowList();
+            }
+
             else if(input.equals("/ladd")){
 
                 AddFunction a = new AddFunction();
