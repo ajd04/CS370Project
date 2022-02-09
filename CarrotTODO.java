@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.*;
 
-public class ProjectMain {
+public class CarrotTODO {
     
     private static String input;
     public static void main(String[] args) throws IOException{
@@ -37,10 +37,10 @@ public class ProjectMain {
                 a.WriteFunction();
             }
 
-            else if(input.equals("/itemcomp")){
+            /*else if(input.equals("/itemcomp")){
                 ItemCompFunction m = new ItemCompFunction();
                m.ItemComp();
-            }
+            }*/
 
             else{
                 
