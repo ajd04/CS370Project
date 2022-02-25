@@ -1,12 +1,34 @@
 import java.io.IOException;
 import java.util.*;
+import org.apache.commons.cli.*;
 
 public class CarrotTODO {
     
-    private static String input;
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException, ParseException{
+
         
-        ProjectIntro i = new ProjectIntro();
+        // Create options object
+        Options options = new Options();
+
+        //Add the create function
+        options.addOption("c", true, "Creates an Excel file");
+
+        //Create the parser and command line objects
+        CommandLineParser parser = new DefaultParser();
+
+        CommandLine cmd = parser.parse(options, args);
+
+        //Call CreateExcel if user inputs -c
+        if(cmd.hasOption("c")){
+
+           CreateExcel e = new CreateExcel();
+           String listName = cmd.getOptionValue("c");
+           e.CreateExcelDoc(listName);
+        }
+        
+        
+
+        /*ProjectIntro i = new ProjectIntro();
         i.PrintIntro();
 
         do{
@@ -37,10 +59,10 @@ public class CarrotTODO {
                 a.WriteFunction();
             }
 
-            /*else if(input.equals("/itemcomp")){
+            else if(input.equals("/itemcomp")){
                 ItemCompFunction m = new ItemCompFunction();
                m.ItemComp();
-            }*/
+            }
 
             else{
                 
@@ -55,6 +77,6 @@ public class CarrotTODO {
         if(input.equals("/exit")){
 
             System.exit(0);
-        }
+        }*/
     }
 }
