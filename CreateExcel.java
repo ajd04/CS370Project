@@ -1,8 +1,11 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -52,5 +55,11 @@ public class CreateExcel {
 
             System.out.println("An excel file with this name already exists!");
         }
+
+        /*FileInputStream fis = new FileInputStream(new File(userHomeFolder, listName + ".xlsx"));
+
+        HSSFWorkbook wb = new HSSFWorkbook(fis);
+
+        HSSFSheet sheet = wb.getSheetAt(0);*/
     }
 }
