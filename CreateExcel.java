@@ -18,7 +18,28 @@ public class CreateExcel {
 
         XSSFSheet spreadsheet = workbook.createSheet("ToDo List");
 
+        XSSFRow row;
+
+        Map<String, Object[]> toDoList = new TreeMap<String, Object[]>();
+
+        toDoList.put("1", new Object[] {"Task Name","Priority","Difficulty","Due Date"});
+
         File excelFile = new File(userHomeFolder, listName + ".xlsx");
+
+        Set<String> keyid = toDoList.keySet();
+
+        int rowid = 0;
+
+        for (String key : keyid){
+            row = spreadsheet.createRow(rowid++);
+            Object[] objectArr = toDoList.get(key);
+            int cellid = 0;
+
+            for (Object obj : objectArr){
+                Cell cell = row.createCell(cellid++);
+                cell.setCellValue((String)obj);
+            }
+        }
 
         if(excelFile.createNewFile()){
 
