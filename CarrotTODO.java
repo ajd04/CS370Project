@@ -13,6 +13,14 @@ public class CarrotTODO {
         //Add the create function
         options.addOption("c", true, "Creates an Excel file");
 
+        //Add the add function
+        Option add = Option.builder("add")
+                    .argName("Task Name")
+                    .hasArgs()
+                    .valueSeparator(',')
+                    .desc("Wries data to an Excel file")
+                    .build();
+
         //Create the parser and command line objects
         CommandLineParser parser = new DefaultParser();
 
@@ -24,6 +32,14 @@ public class CarrotTODO {
            CreateExcel e = new CreateExcel();
            String listName = cmd.getOptionValue("c");
            e.CreateExcelDoc(listName);
+        }
+
+        //Call AddExcel if user inputs -a
+        if(cmd.hasOption("a")){
+
+            FillExcel a = new FillExcel();
+            String listName = cmd.getOptionValue("a");
+
         }
         
         

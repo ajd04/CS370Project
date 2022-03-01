@@ -18,8 +18,6 @@ public class CreateExcel {
 
         XSSFSheet spreadsheet = workbook.createSheet("ToDo List");
 
-        XSSFRow row;
-
         File excelFile = new File(userHomeFolder, listName + ".xlsx");
 
         if(excelFile.createNewFile()){
