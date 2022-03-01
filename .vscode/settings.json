@@ -151,6 +151,11 @@
         "c:\\Apache\\commons-cli-1.5.0-javadoc.jar",
         "c:\\Apache\\commons-cli-1.5.0-sources.jar",
         "c:\\Apache\\commons-cli-1.5.0-tests.jar",
-        "c:\\Apache\\commons-cli-1.5.0-test-sources.jar"
+        "c:\\Apache\\commons-cli-1.5.0-test-sources.jar",
+        "c:\\commons-cli-1.5.0-bin\\commons-cli-1.5.0\\commons-cli-1.5.0.jar",
+        "c:\\commons-cli-1.5.0-bin\\commons-cli-1.5.0\\commons-cli-1.5.0-javadoc.jar",
+        "c:\\commons-cli-1.5.0-bin\\commons-cli-1.5.0\\commons-cli-1.5.0-sources.jar",
+        "c:\\commons-cli-1.5.0-bin\\commons-cli-1.5.0\\commons-cli-1.5.0-tests.jar",
+        "c:\\commons-cli-1.5.0-bin\\commons-cli-1.5.0\\commons-cli-1.5.0-test-sources.jar"
     ]
 }
