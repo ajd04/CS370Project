@@ -86,9 +86,22 @@ public class CreateExcel {
             String s = String.valueOf(i);
             toDoList.put(s, new Object[] {taskName,priority,difficulty,date});
             i++;
+
+            for (String key : keyid) {
+                row = spreadsheet.createRow(rowid++);
+                Object[] objectArr = toDoList.get(key);
+                int cellid = 0;
+
+                for (Object obj : objectArr){
+                    Cell cell = row.createCell(cellid++);
+                    cell.setCellValue((String)obj);
+                }
+            }
         }
         if(input.equals("exit")){
-            System.exit(0);
+            FileOutputStream out = new FileOutputStream(excelFile);
+            workbook.write(out);
+            out.close();
         }
     }
 }
