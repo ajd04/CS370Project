@@ -75,10 +75,10 @@ public class CreateExcel {
             String taskName = input.nextLine();
 
             input = new Scanner(System.in);
-            char priority = input.next().charAt(0);
+            String priority = input.nextLine();
 
             input = new Scanner(System.in);
-            char difficulty = input.next().charAt(0);
+            String difficulty = input.nextLine();
 
             input = new Scanner(System.in);
             String date = input.next();
