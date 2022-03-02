@@ -11,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CreateExcel {
 
-    public void CreateExcelDoc(String listName) throws IOException {
+    public void CreateExcelDoc(String fileName, String taskName, String priority, String difficulty, String dueDate) throws IOException {
 
         final String userHomeFolder = System.getProperty("user.home");
 
@@ -25,7 +25,7 @@ public class CreateExcel {
 
         toDoList.put("1", new Object[] {"Task Name","Priority","Difficulty","Due Date"});
 
-        File excelFile = new File(userHomeFolder, listName + ".xlsx");
+        File excelFile = new File(userHomeFolder, fileName + ".xlsx");
 
         Set<String> keyid = toDoList.keySet();
 
@@ -60,8 +60,7 @@ public class CreateExcel {
 
         int i = 2;
 
-        while(!input.equals("exit")){
-            File excelFile2 = new File(userHomeFolder, listName + ".xlsx");
+            File excelFile2 = new File(userHomeFolder, fileName + ".xlsx");
 
             FileInputStream fip = new FileInputStream(excelFile2);
 
@@ -69,9 +68,9 @@ public class CreateExcel {
 
             XSSFSheet spreadsheet2 = workbook2.getSheetAt(0);
 
-            System.out.println("Enter Task Name, Priority, Difficulty, and Due Date. Type 'exit' to finish adding items.");
+            //System.out.println("Enter Task Name, Priority, Difficulty, and Due Date. Type 'exit' to finish adding items.");
 
-            input = new Scanner(System.in);
+            /*input = new Scanner(System.in);
             String taskName = input.nextLine();
 
             input = new Scanner(System.in);
@@ -81,11 +80,11 @@ public class CreateExcel {
             String difficulty = input.nextLine();
 
             input = new Scanner(System.in);
-            String date = input.next();
+            String date = input.next();*/
 
             String s = String.valueOf(i);
             toDoList = new TreeMap<String, Object[]>();
-            toDoList.put(s, new Object[] {taskName,priority,difficulty,date});
+            toDoList.put(s, new Object[] {taskName,priority,difficulty,dueDate});
 
             keyid = toDoList.keySet();
 
@@ -101,17 +100,10 @@ public class CreateExcel {
                     cell.setCellValue((String)obj);
                 }
             }
-
-            FileOutputStream out = new FileOutputStream(excelFile);
-            workbook.write(out);
-
-            i++;
-        }
-
-        if(input.equals("exit")){
+        
             FileOutputStream out = new FileOutputStream(excelFile);
             workbook.write(out);
             out.close();
-        }
+        
     }
 }

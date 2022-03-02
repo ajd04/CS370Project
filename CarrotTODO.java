@@ -6,12 +6,18 @@ public class CarrotTODO {
     
     public static void main(String[] args) throws IOException, ParseException{
 
-        
         // Create options object
         Options options = new Options();
 
         //Add the create function
-        options.addOption("c", true, "Adds items to the list, creates an Excel file if not existent");
+        Option create = Option.builder("c")
+        .argName("<filename> <task name> <priority> <difficulty> <due date>")
+        .numberOfArgs(5)
+        .valueSeparator(' ')
+        .desc("Creates an Excel file and writes data to it")
+        .build();
+
+        options.addOption(create);
 
         //Create the parser and command line objects
         CommandLineParser parser = new DefaultParser();
@@ -22,8 +28,18 @@ public class CarrotTODO {
         if(cmd.hasOption("c")){
 
            CreateExcel e = new CreateExcel();
-           String listName = cmd.getOptionValue("c");
-           e.CreateExcelDoc(listName);
+           String[] arguments = cmd.getOptionValues("c");
+           String fileName = arguments[0];
+           String taskName = arguments[1];
+           String priority = arguments[2];
+           String difficulty = arguments[3];
+           String dueDate = arguments[4];
+
+           e.CreateExcelDoc(fileName, taskName, priority, difficulty, dueDate);
+           
+        }
+        else{
+            System.out.println("Invalid command!");
         }
         
         
