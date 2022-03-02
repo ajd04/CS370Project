@@ -4,8 +4,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -56,10 +54,41 @@ public class CreateExcel {
             System.out.println("An excel file with this name already exists!");
         }
 
-        /*FileInputStream fis = new FileInputStream(new File(userHomeFolder, listName + ".xlsx"));
+        //stuff under here is for filling the file
 
-        HSSFWorkbook wb = new HSSFWorkbook(fis);
+        Scanner input = new Scanner(System.in);
 
-        HSSFSheet sheet = wb.getSheetAt(0);*/
+        int i = 2;
+
+        while(!input.equals("exit")){
+            File excelFile2 = new File(userHomeFolder, listName + ".xlsx");
+
+            FileInputStream fip = new FileInputStream(excelFile2);
+
+            XSSFWorkbook workbook2 = new XSSFWorkbook(fip);
+
+            XSSFSheet spreadsheet2 = workbook2.getSheetAt(0);
+
+            System.out.println("Enter Task Name, Priority, Difficulty, and Due Date. Type 'exit' to finish adding items.");
+
+            input = new Scanner(System.in);
+            String taskName = input.nextLine();
+
+            input = new Scanner(System.in);
+            char priority = input.next().charAt(0);
+
+            input = new Scanner(System.in);
+            char difficulty = input.next().charAt(0);
+
+            input = new Scanner(System.in);
+            String date = input.next();
+
+            String s = String.valueOf(i);
+            toDoList.put(s, new Object[] {taskName,priority,difficulty,date});
+            i++;
+        }
+        if(input.equals("exit")){
+            System.exit(0);
+        }
     }
 }
