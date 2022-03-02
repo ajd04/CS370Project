@@ -84,8 +84,12 @@ public class CreateExcel {
             String date = input.next();
 
             String s = String.valueOf(i);
+            toDoList = new TreeMap<String, Object[]>();
             toDoList.put(s, new Object[] {taskName,priority,difficulty,date});
-            i++;
+
+            keyid = toDoList.keySet();
+
+            rowid = i;
 
             for (String key : keyid) {
                 row = spreadsheet.createRow(rowid++);
@@ -97,7 +101,13 @@ public class CreateExcel {
                     cell.setCellValue((String)obj);
                 }
             }
+
+            FileOutputStream out = new FileOutputStream(excelFile);
+            workbook.write(out);
+
+            i++;
         }
+
         if(input.equals("exit")){
             FileOutputStream out = new FileOutputStream(excelFile);
             workbook.write(out);
