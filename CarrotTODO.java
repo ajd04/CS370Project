@@ -13,11 +13,21 @@ public class CarrotTODO {
         Option create = Option.builder("c")
         .argName("<filename> <task name> <priority> <difficulty> <due date>")
         .numberOfArgs(5)
-        .valueSeparator(' ')
+        .valueSeparator(',')
         .desc("Creates an Excel file and writes data to it")
         .build();
 
         options.addOption(create);
+
+        //Add the Update function
+        Option update = Option.builder("u")
+        .argName("<filename> <task name> <priority> <difficulty> <due date>")
+        .numberOfArgs(5)
+        .valueSeparator(',')
+        .desc("Updates an existing Excel file")
+        .build();
+
+        options.addOption(update);
 
         //Create the parser and command line objects
         CommandLineParser parser = new DefaultParser();
@@ -37,6 +47,19 @@ public class CarrotTODO {
 
            e.CreateExcelDoc(fileName, taskName, priority, difficulty, dueDate);
            
+        }
+        else if(cmd.hasOption("u")){
+
+            UpdateExcel u = new UpdateExcel();
+            String[] arguments = cmd.getOptionValues("u");
+           String fileName = arguments[0];
+           String taskName = arguments[1];
+           String priority = arguments[2];
+           String difficulty = arguments[3];
+           String dueDate = arguments[4];
+
+           u.UpdateExcelFile(fileName, taskName, priority, difficulty, dueDate);
+
         }
         else{
             System.out.println("Invalid command!");

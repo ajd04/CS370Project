@@ -52,6 +52,7 @@ public class CreateExcel {
         else{
 
             System.out.println("An excel file with this name already exists!");
+            System.exit(0);
         }
 
         //stuff under here is for filling the file
@@ -67,20 +68,6 @@ public class CreateExcel {
             XSSFWorkbook workbook2 = new XSSFWorkbook(fip);
 
             XSSFSheet spreadsheet2 = workbook2.getSheetAt(0);
-
-            //System.out.println("Enter Task Name, Priority, Difficulty, and Due Date. Type 'exit' to finish adding items.");
-
-            /*input = new Scanner(System.in);
-            String taskName = input.nextLine();
-
-            input = new Scanner(System.in);
-            String priority = input.nextLine();
-
-            input = new Scanner(System.in);
-            String difficulty = input.nextLine();
-
-            input = new Scanner(System.in);
-            String date = input.next();*/
 
             String s = String.valueOf(i);
             toDoList = new TreeMap<String, Object[]>();
