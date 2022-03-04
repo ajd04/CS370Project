@@ -72,7 +72,7 @@ public class UpdateExcel {
              
         } catch (EncryptedDocumentException | IOException e) {
             System.err.println("Exception while updating an existing excel file.");
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 }
