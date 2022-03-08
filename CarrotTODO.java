@@ -6,6 +6,9 @@ public class CarrotTODO {
     
     public static void main(String[] args) throws IOException, ParseException{
 
+        ProjectIntro i = new ProjectIntro();
+        i.PrintIntro();
+
         // Create options object
         Options options = new Options();
 
@@ -28,6 +31,16 @@ public class CarrotTODO {
         .build();
 
         options.addOption(update);
+
+        //Add the Help function
+        Option help = Option.builder("h")
+        .argName("-h")
+        .numberOfArgs(0)
+        .valueSeparator(',')
+        .desc("Loads the help page")
+        .build();
+
+        options.addOption(help);
 
         //Create the parser and command line objects
         CommandLineParser parser = new DefaultParser();
@@ -61,16 +74,16 @@ public class CarrotTODO {
            u.UpdateExcelFile(fileName, taskName, priority, difficulty, dueDate);
 
         }
+        else if(cmd.hasOption("h")){
+
+            ProjectHelp h = new ProjectHelp();
+            h.HelpFunction();
+        }
         else{
             System.out.println("Invalid command!");
         }
-        
-        
 
-        /*ProjectIntro i = new ProjectIntro();
-        i.PrintIntro();
-
-        do{
+        /*do{
             Scanner tokens = new Scanner(System.in);
             input = tokens.next();
 
