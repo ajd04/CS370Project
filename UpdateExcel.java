@@ -37,7 +37,7 @@ public class UpdateExcel {
             //Getting the count of existing records
             int rowCount = sheet.getLastRowNum();
  
-            //Iterating new students to update
+            //Iterating new tasks to update
             for (Object[] task : newTask) {
                  
                 //Creating new row from the next row count
@@ -45,7 +45,7 @@ public class UpdateExcel {
  
                 int columnCount = 0;
  
-                //Iterating student informations
+                //Iterating task information
                 for (Object info : task) {
                      
                     //Creating new cell and setting the value
@@ -68,10 +68,10 @@ public class UpdateExcel {
             workbook.close();
             os.close();
              
-            System.out.println("Excel file has been updated successfully.");
+            System.out.println("Excel file has been updated successfully!");
              
         } catch (EncryptedDocumentException | IOException e) {
-            System.err.println("Exception while updating an existing excel file.");
+            System.err.println("Exception while updating an existing excel file!");
             //e.printStackTrace();
         }
     }
