@@ -8,10 +8,7 @@ public class ProjectHelp {
 
         //Insert list of commands and a brief description of each
 
-        System.out.println("\n" + ANSI_RED + "/lc" + ANSI_RESET + ": Creates a new to do list");
-        System.out.println(ANSI_RED + "/ls" + ANSI_RESET + ": Shows contents of a to do list");
-        System.out.println(ANSI_RED + "/ladd" + ANSI_RESET + ": Adds a new item to a to do list");
-        System.out.println(ANSI_RED + "/itemcomp" + ANSI_RESET + ": Marks an item as completed" + ANSI_ITALICS + " **This is in the works**" + ANSI_RESET);
-        System.out.println(ANSI_RED + "/exit" + ANSI_RESET + ": Exits the program\n");
+        System.out.println("\n" + ANSI_RED + "Create a new list & add items:" + ANSI_RESET + " -c <filename> <\"task name\"> <difficulty> <priority> <due date>");
+        System.out.println(ANSI_RED + "Update existing excel file:" + ANSI_RESET + " -u <filename> <\"task name\"> <difficulty> <priority> <due date>");
     }
 }
