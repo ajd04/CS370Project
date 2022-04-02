@@ -8,7 +8,8 @@ public class ProjectHelp {
 
         //Insert list of commands and a brief description of each
 
-        System.out.println("\n" + ANSI_RED + "Create a new list & add items:" + ANSI_RESET + " -c <filename> <\"task name\"> <difficulty> <priority> <due date>");
-        System.out.println(ANSI_RED + "Update existing excel file:" + ANSI_RESET + " -u <filename> <\"task name\"> <difficulty> <priority> <due date>");
+        System.out.println("\n" + ANSI_RED + "Create a new list & add items:" + ANSI_RESET + " -c <filename> <difficulty> <priority> <due date> <task name>");
+        System.out.println(ANSI_RED + "Update existing excel file:" + ANSI_RESET + " -u <filename> <difficulty> <priority> <due date> <task name>");
+        System.out.println(ANSI_RED + "Exit the program:" + ANSI_RESET + " -e\n");
     }
 }

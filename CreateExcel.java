@@ -44,14 +44,14 @@ public class CreateExcel {
 
         if(excelFile.createNewFile()){
 
-            System.out.println("Excel file created!");
+            System.out.println("\nExcel file created!\n");
             FileOutputStream out = new FileOutputStream(excelFile);
             workbook.write(out);
             out.close();
         }
         else{
 
-            System.out.println("An excel file with this name already exists!");
+            System.out.println("\nAn excel file with this name already exists!\n");
             System.exit(0);
         }
 

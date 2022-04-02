@@ -11,7 +11,7 @@ public class ProjectIntro {
 
         System.out.println("Welcome to " + ANSI_BOLD + "CARROTODO" + ANSI_RESET + ".");
         System.out.println(ANSI_ITALICS + "Made by Adam DeLucia, Matthew Gabler, Michael Johnson, and Gregory Patti\n" + ANSI_RESET);
-        System.out.println("Enter " + ANSI_YELLOW + "-h" + ANSI_RESET + " for a list of commands.");
+        System.out.println("Enter " + ANSI_YELLOW + "-h" + ANSI_RESET + " for a list of commands.\n");
         
         
     }

@@ -68,10 +68,10 @@ public class UpdateExcel {
             workbook.close();
             os.close();
              
-            System.out.println("Excel file has been updated successfully!");
+            System.out.println("\nExcel file has been updated successfully!\n");
              
         } catch (EncryptedDocumentException | IOException e) {
-            System.err.println("Exception while updating an existing excel file!");
+            System.err.println("\nException while updating an existing excel file!\n");
             //e.printStackTrace();
         }
     }
