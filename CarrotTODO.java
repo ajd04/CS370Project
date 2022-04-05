@@ -55,6 +55,14 @@ public class CarrotTODO {
 
             u.UpdateExcelFile(fileName, taskName, priority, difficulty, dueDate);
             }
+            else if(cmd.hasOption("m")){
+
+                ItemCompFunction m = new ItemCompFunction();
+                String fileName = args[1];
+                int rowNum = Integer.parseInt(args[2]);
+
+                m.markAsComplete(fileName, rowNum);
+            }
             else if(cmd.hasOption("h")){
 
                 ProjectHelp h = new ProjectHelp();
@@ -99,6 +107,16 @@ public class CarrotTODO {
         .build();
 
         options.addOption(update);
+
+        //Add the ItemComp command
+        Option markComplete = Option.builder("m")
+        .argName("-m")
+        .numberOfArgs(2)
+        .valueSeparator(',')
+        .desc("Marks an item as complete")
+        .build();
+
+        options.addOption(markComplete);
 
         //Add the Help command
         Option help = Option.builder("h")
