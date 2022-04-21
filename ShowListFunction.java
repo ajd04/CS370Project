@@ -1,6 +1,12 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ShowListFunction {
     
@@ -13,13 +19,39 @@ public class ShowListFunction {
         Scanner input = new Scanner(System.in);
         String listName = input.next();
 
-        File file = new File(userHomeFolder, listName + ".txt");
+        File file = new File(userHomeFolder, listName + ".xlsx");
 
         if(file.exists()){
-            Scanner sc = new Scanner(file);
+            FileInputStream inputStream = new FileInputStream(file);
 
-            while(sc.hasNextLine())
-                System.out.println(sc.nextLine());
+            Workbook workbook = new XSSFWorkbook(inputStream);
+            Sheet firstSheet = workbook.getSheetAt(0);
+            Iterator<Row> iterator = firstSheet.iterator();
+
+            while(iterator.hasNext()){
+                Row nextRow = iterator.next();
+                Iterator<Cell> cellIterator = nextRow.cellIterator();
+
+                while(cellIterator.hasNext()){
+                    Cell cell = cellIterator.next();
+
+                    switch (cell.getCellType()){
+                        case STRING:
+                        System.out.print(cell.getStringCellValue());
+                        break;
+                        case BOOLEAN:
+                        System.out.print(cell.getBooleanCellValue());
+                        break;
+                        case NUMERIC:
+                        System.out.print(cell.getNumericCellValue());
+                        break;
+                    }
+                    System.out.print(" - ");
+                }
+                System.out.println();
+            }
+            workbook.close();
+            inputStream.close();
         }
         else{
             System.out.println("No such file exists!\n");
