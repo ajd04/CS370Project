@@ -63,6 +63,14 @@ public class CarrotTODO {
 
                 m.markAsComplete(fileName, rowNum);
             }
+            else if(cmd.hasOption("d")){
+
+                DeleteFunction d = new DeleteFunction();
+                String fileName = args[1];
+                int rowNum = Integer.parseInt(args[2]) - 1;
+
+                d.removeRow(fileName, rowNum);
+            }
             else if(cmd.hasOption("h")){
 
                 ProjectHelp h = new ProjectHelp();
@@ -117,6 +125,16 @@ public class CarrotTODO {
         .build();
 
         options.addOption(markComplete);
+
+        //Add the Delete command
+        Option delete = Option.builder("d")
+        .argName("-d")
+        .numberOfArgs(2)
+        .valueSeparator(',')
+        .desc("Deletes a to-do list item")
+        .build();
+
+        options.addOption(delete);
 
         //Add the Help command
         Option help = Option.builder("h")
