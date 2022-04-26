@@ -12,6 +12,7 @@ public class ProjectHelp {
         System.out.println(ANSI_RED + "Update an existing Excel file:" + ANSI_RESET + " -u <filename> <difficulty> <priority> <due date> <task name>");
         System.out.println(ANSI_RED + "Mark a to-do list item as complete:" + ANSI_RESET + " -m <filename> <row number of item>");
         System.out.println(ANSI_RED + "Delete a row:" + ANSI_RESET + " -d <filename> <row number of item>");
+        System.out.println(ANSI_RED + "Display To-Do List:" + ANSI_RESET + " -s");
         System.out.println(ANSI_RED + "Exit the program:" + ANSI_RESET + " -e\n");
         System.out.println(ANSI_RED + ANSI_BOLD + "NOTE: " + ANSI_RESET + "Every parameter must be " + ANSI_BOLD + "ONLY" + ANSI_RESET + " one word with the exception of Task Name!\n");
 
