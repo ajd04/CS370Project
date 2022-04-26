@@ -22,6 +22,7 @@ public class ShowListFunction {
             Workbook workbook = new XSSFWorkbook(inputStream);
             Sheet firstSheet = workbook.getSheetAt(0);
             Iterator<Row> iterator = firstSheet.iterator();
+            System.out.println("\n");
 
             while(iterator.hasNext()){
                 Row nextRow = iterator.next();
@@ -45,11 +46,13 @@ public class ShowListFunction {
                 }
                 System.out.println();
             }
+            
+            System.out.println("\n");
             workbook.close();
             inputStream.close();
         }
         else{
-            System.out.println("No such file exists!\n");
+            System.out.println("\nNo such file exists!\n");
         }
 
     }

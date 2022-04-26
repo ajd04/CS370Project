@@ -81,6 +81,13 @@ public class CarrotTODO {
 
                         d.removeRow(fileName, rowNum);
                     }
+                    else if(cmd.hasOption("s")){
+
+                        ShowListFunction s = new ShowListFunction();
+                        String fileName = args[1];
+
+                        s.ShowList(fileName);
+                    }
                     else if(cmd.hasOption("h")){
 
                         ProjectHelp h = new ProjectHelp();
