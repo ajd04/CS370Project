@@ -19,6 +19,76 @@ public class CarrotTODO {
         while(keepRunning = true){
 
             try{
+            String input = scanner.nextLine();
+            
+            args = input.split(" ", 6);
+
+            //Create options object
+            Options options = CreateOptions();
+
+            //Create the parser and command line objects
+            CommandLineParser parser = new DefaultParser();
+
+            cmd = parser.parse(options, args);
+
+            //Call the corrosponding function for the inputed option
+            if(cmd.hasOption("c")){
+
+                CreateExcel e = new CreateExcel();
+                String[] arguments = cmd.getOptionValues("c");
+                String fileName = arguments[0];
+                String priority = arguments[1];
+                String difficulty = arguments[2];
+                String dueDate = arguments[3];
+                String taskName = arguments[4];
+
+            e.CreateExcelDoc(fileName, taskName, priority, difficulty, dueDate);
+            }
+            else if(cmd.hasOption("u")){
+
+                UpdateExcel u = new UpdateExcel();
+                String[] arguments = cmd.getOptionValues("u");
+                String fileName = arguments[0];
+                String priority = arguments[1];
+                String difficulty = arguments[2];
+                String dueDate = arguments[3];
+                String taskName = arguments[4];
+
+            u.UpdateExcelFile(fileName, taskName, priority, difficulty, dueDate);
+            }
+            else if(cmd.hasOption("m")){
+
+                ItemCompFunction m = new ItemCompFunction();
+                String fileName = args[1];
+                int rowNum = Integer.parseInt(args[2]);
+
+                m.markAsComplete(fileName, rowNum);
+            }
+            else if(cmd.hasOption("d")){
+
+                DeleteFunction d = new DeleteFunction();
+                String fileName = args[1];
+                int rowNum = Integer.parseInt(args[2]) - 1;
+
+                d.removeRow(fileName, rowNum);
+            }
+            else if(cmd.hasOption("s")){
+
+                ShowListFunction s = new ShowListFunction();
+
+                s.ShowList();
+            }
+            else if(cmd.hasOption("h")){
+
+                ProjectHelp h = new ProjectHelp();
+                h.HelpFunction();
+            }
+            else if(cmd.hasOption("e")){
+
+                System.out.println("\nThanks for using our program!\n");
+                System.exit(0);
+            }
+            else{
                 
                 do{
                     //Query the user to type in a command
@@ -161,6 +231,16 @@ public class CarrotTODO {
         .build();
 
         options.addOption(help);
+
+        //Add the Show List command
+        Option ShowList = Option.builder("s")
+        .argName("-s")
+        .numberOfArgs(0)
+        .valueSeparator(',')
+        .desc("Shows List")
+        .build();
+
+        options.addOption(ShowList);
 
         //Add the Exit command
         Option exit = Option.builder("e")
