@@ -152,6 +152,16 @@ public class CarrotTODO {
 
         options.addOption(help);
 
+        //Add the Show List command
+        Option ShowList = Option.builder("s")
+        .argName("-s")
+        .numberOfArgs(0)
+        .valueSeparator(',')
+        .desc("Shows List")
+        .build();
+
+        options.addOption(ShowList);
+
         //Add the Exit command
         Option exit = Option.builder("e")
         .argName("-e")
