@@ -165,7 +165,7 @@ public class CarrotTODO {
         //Add the Show List command
         Option ShowList = Option.builder("s")
         .argName("-s")
-        .numberOfArgs(0)
+        .numberOfArgs(1)
         .valueSeparator(',')
         .desc("Shows List")
         .build();

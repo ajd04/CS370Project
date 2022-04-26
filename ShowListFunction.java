@@ -9,17 +9,12 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ShowListFunction {
-    
-    public String userHomeFolder = System.getProperty("user.home");
 
-    public void ShowList() throws IOException {
+    public void ShowList(String fileName) throws IOException {
 
-        System.out.println("Enter a file name whose contents you wish to display (w/o extension): ");
+        final String userHomeFolder = System.getProperty("user.home");
 
-        Scanner input = new Scanner(System.in);
-        String listName = input.next();
-
-        File file = new File(userHomeFolder, listName + ".xlsx");
+        File file = new File(userHomeFolder, fileName + ".xlsx");
 
         if(file.exists()){
             FileInputStream inputStream = new FileInputStream(file);
