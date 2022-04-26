@@ -12,83 +12,99 @@ public class CarrotTODO {
         //Declare the command line variable
         CommandLine cmd;
 
-        do{
-            //Query the user to type in a command
-            System.out.print("Enter a command: ");
+        //Declare the boolean variable (this is here so that the program will keep runniung if there is an exception)
+        //Also, this isn't an infinite loop because of the System.exit function that is executed if the user types -e
+        boolean keepRunning = true;
 
-            Scanner scanner = new Scanner(System.in);
+        while(keepRunning = true){
 
-            String input = scanner.nextLine();
-            
-            args = input.split(" ", 6);
-
-            //Create options object
-            Options options = CreateOptions();
-
-            //Create the parser and command line objects
-            CommandLineParser parser = new DefaultParser();
-
-            cmd = parser.parse(options, args);
-
-            //Call the corrosponding function for the inputed option
-            if(cmd.hasOption("c")){
-
-                CreateExcel e = new CreateExcel();
-                String[] arguments = cmd.getOptionValues("c");
-                String fileName = arguments[0];
-                String priority = arguments[1];
-                String difficulty = arguments[2];
-                String dueDate = arguments[3];
-                String taskName = arguments[4];
-
-            e.CreateExcelDoc(fileName, taskName, priority, difficulty, dueDate);
-            }
-            else if(cmd.hasOption("u")){
-
-                UpdateExcel u = new UpdateExcel();
-                String[] arguments = cmd.getOptionValues("u");
-                String fileName = arguments[0];
-                String priority = arguments[1];
-                String difficulty = arguments[2];
-                String dueDate = arguments[3];
-                String taskName = arguments[4];
-
-            u.UpdateExcelFile(fileName, taskName, priority, difficulty, dueDate);
-            }
-            else if(cmd.hasOption("m")){
-
-                ItemCompFunction m = new ItemCompFunction();
-                String fileName = args[1];
-                int rowNum = Integer.parseInt(args[2]);
-
-                m.markAsComplete(fileName, rowNum);
-            }
-            else if(cmd.hasOption("d")){
-
-                DeleteFunction d = new DeleteFunction();
-                String fileName = args[1];
-                int rowNum = Integer.parseInt(args[2]) - 1;
-
-                d.removeRow(fileName, rowNum);
-            }
-            else if(cmd.hasOption("h")){
-
-                ProjectHelp h = new ProjectHelp();
-                h.HelpFunction();
-            }
-            else if(cmd.hasOption("e")){
-
-                System.out.println("\nThanks for using our program!\n");
-                System.exit(0);
-            }
-            else{
+            try{
                 
-                System.out.println("\nInvalid command!\n");
-            }
+                do{
+                    //Query the user to type in a command
+                    System.out.print("Enter a command: ");
 
-            Arrays.fill(args, null);
+                    Scanner scanner = new Scanner(System.in);
+
+                    String input = scanner.nextLine();
+                    
+                    args = input.split(" ", 6);
+
+                    //Create options object
+                    Options options = CreateOptions();
+
+                    //Create the parser and command line objects
+                    CommandLineParser parser = new DefaultParser();
+
+                    
+                    cmd = parser.parse(options, args);
+                        
+
+                    //Call the corrosponding function for the inputed option
+                    if(cmd.hasOption("c")){
+
+                        CreateExcel e = new CreateExcel();
+                        String[] arguments = cmd.getOptionValues("c");
+                        String fileName = arguments[0];
+                        String priority = arguments[1];
+                        String difficulty = arguments[2];
+                        String dueDate = arguments[3];
+                        String taskName = arguments[4];
+
+                    e.CreateExcelDoc(fileName, taskName, priority, difficulty, dueDate);
+                    }
+                    else if(cmd.hasOption("u")){
+
+                        UpdateExcel u = new UpdateExcel();
+                        String[] arguments = cmd.getOptionValues("u");
+                        String fileName = arguments[0];
+                        String priority = arguments[1];
+                        String difficulty = arguments[2];
+                        String dueDate = arguments[3];
+                        String taskName = arguments[4];
+
+                    u.UpdateExcelFile(fileName, taskName, priority, difficulty, dueDate);
+                    }
+                    else if(cmd.hasOption("m")){
+
+                        ItemCompFunction m = new ItemCompFunction();
+                        String fileName = args[1];
+                        int rowNum = Integer.parseInt(args[2]);
+
+                        m.markAsComplete(fileName, rowNum);
+                    }
+                    else if(cmd.hasOption("d")){
+
+                        DeleteFunction d = new DeleteFunction();
+                        String fileName = args[1];
+                        int rowNum = Integer.parseInt(args[2]) - 1;
+
+                        d.removeRow(fileName, rowNum);
+                    }
+                    else if(cmd.hasOption("h")){
+
+                        ProjectHelp h = new ProjectHelp();
+                        h.HelpFunction();
+                    }
+                    else if(cmd.hasOption("e")){
+
+                        System.out.println("\nThanks for using our program!\n");
+                        System.exit(0);
+                    }
+                    else{
+                            
+                        System.out.println("\nInvalid command!\n");
+                    }
+
+                    Arrays.fill(args, null);
+                }
+                while(cmd.hasOption("e") == false);
+            }
+            catch(ParseException e){
+
+                System.out.println("\nA parsing error has occured! Make sure you are entering in the correct number of arguments!\n");
+            }
         }
-        while(cmd.hasOption("e") == false);
     }
 
     public static Options CreateOptions(){
