@@ -25,25 +25,32 @@ public class CreateExcel {
 
         toDoList.put("1", new Object[] {"Task Name","Priority","Difficulty","Due Date"});
 
+        toDoList.put("2", new Object[] {taskName,priority,difficulty,dueDate});
+
         File excelFile = new File(userHomeFolder, fileName + ".xlsx");
-
-        Set<String> keyid = toDoList.keySet();
-
-        int rowid = 0;
-
-        for (String key : keyid){
-            row = spreadsheet.createRow(rowid++);
-            Object[] objectArr = toDoList.get(key);
-            int cellid = 0;
-
-            for (Object obj : objectArr){
-                Cell cell = row.createCell(cellid++);
-                cell.setCellValue((String)obj);
-            }
-        }
 
         if(excelFile.createNewFile()){
 
+            Set<String> keyid = toDoList.keySet();
+
+            int rowid = 0;
+
+            for (String key : keyid){
+                
+                if(key.equals("2")){
+                    rowid++;
+                }
+                
+                row = spreadsheet.createRow(rowid++);
+                Object[] objectArr = toDoList.get(key);
+                int cellid = 0;
+
+                for (Object obj : objectArr){
+                    Cell cell = row.createCell(cellid++);
+                    cell.setCellValue((String)obj);
+                }
+            }
+                
             System.out.println("\nExcel file created!\n");
             FileOutputStream out = new FileOutputStream(excelFile);
             workbook.write(out);
@@ -52,13 +59,11 @@ public class CreateExcel {
         else{
 
             System.out.println("\nAn excel file with this name already exists!\n");
-            System.exit(0);
         }
 
         //stuff under here is for filling the file
 
-        Scanner input = new Scanner(System.in);
-
+        /*
         int i = 2;
 
             File excelFile2 = new File(userHomeFolder, fileName + ".xlsx");
@@ -90,7 +95,7 @@ public class CreateExcel {
         
             FileOutputStream out = new FileOutputStream(excelFile);
             workbook.write(out);
-            out.close();
+            out.close(); */
         
     }
 }

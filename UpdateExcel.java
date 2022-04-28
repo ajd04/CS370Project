@@ -71,7 +71,15 @@ public class UpdateExcel {
             System.out.println("\nExcel file has been updated successfully!\n");
              
         } catch (EncryptedDocumentException | IOException e) {
-            System.err.println("\nException while updating an existing excel file!\n");
+            
+            if(e instanceof IOException){
+
+                System.err.println("\nEither that file does not exist, or you still have it open!\n");
+            }
+            else{
+                
+                System.err.println("\nException while updating an existing Excel file!\n");
+            }
             //e.printStackTrace();
         }
     }

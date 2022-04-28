@@ -19,37 +19,53 @@ public class DeleteFunction {
         // Creating file object of existing excel file
         File excelFile = new File(userHomeFolder, fileName + ".xlsx");
 
-        //Creating input stream
-        FileInputStream inputStream = new FileInputStream(excelFile);
-             
-        //Creating workbook from input stream
-        XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+        try{
+          
+          //Creating input stream
+          FileInputStream inputStream = new FileInputStream(excelFile);
+              
+          //Creating workbook from input stream
+          XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 
-        XSSFSheet sheet = workbook.getSheetAt(0);
-        
-        int lastRowNum=sheet.getLastRowNum();
-        if(rowNum>=0&&rowNum<lastRowNum){
-          sheet.shiftRows(rowNum + 1, lastRowNum, - 1);
-        }
-        if(rowNum==lastRowNum){
-          XSSFRow removingRow=sheet.getRow(rowNum);
-          if(removingRow!=null){
-            sheet.removeRow(removingRow);
+          XSSFSheet sheet = workbook.getSheetAt(0);
+          
+          int lastRowNum=sheet.getLastRowNum();
+
+          FileOutputStream os = new FileOutputStream(excelFile);
+          
+          if(rowNum > 0){
+            if(rowNum>=0&&rowNum<lastRowNum){
+              sheet.shiftRows(rowNum + 1, lastRowNum, - 1);
+            }
+            if(rowNum==lastRowNum){
+              XSSFRow removingRow=sheet.getRow(rowNum);
+              if(removingRow!=null){
+                sheet.removeRow(removingRow);
+              }
+            }
+            //Close input stream
+            inputStream.close();
+    
+            //Crating output stream and writing the updated workbook
+            workbook.write(os);
+            
+            //Close the workbook and output stream
+            workbook.close();
+            os.close();
+
+            System.out.println("\nRow deleted!\n");
+          }
+          else{
+            System.out.println("\nInvalid row number!\n");
+            inputStream.close();
+            workbook.write(os);
+            workbook.close();
+            os.close();
           }
         }
+        catch(IOException e){
 
-        //Close input stream
-        inputStream.close();
- 
-        //Crating output stream and writing the updated workbook
-        FileOutputStream os = new FileOutputStream(excelFile);
-        workbook.write(os);
-         
-        //Close the workbook and output stream
-        workbook.close();
-        os.close();
-
-        System.out.println("\nRow deleted!\n");
-      }
-
+          System.out.println("\nEither that file does not exist, or you still have it open!\n");
+        }
+    }
 }

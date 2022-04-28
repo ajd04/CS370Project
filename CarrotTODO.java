@@ -107,16 +107,23 @@ public class CarrotTODO {
                 }
                 while(cmd.hasOption("e") == false);
             }
-            catch(ParseException e){
+            catch(ParseException | NumberFormatException e){
 
-                System.out.println("\nA parsing error has occured! Make sure you are entering in the correct number of arguments!\n");
+                if(e instanceof ParseException){
+
+                    System.out.println("\nA parsing error has occured! Make sure you are entering in the correct number of arguments!\n");
+                }
+                else if(e instanceof NumberFormatException){
+
+                    System.out.println("\nThe row number argument must be an integer!\n");
+                }
             }
         }
     }
 
     public static Options CreateOptions(){
 
-        // Create options object
+        //Create options object
         Options options = new Options();
 
         //Add the create function

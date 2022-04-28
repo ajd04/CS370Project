@@ -16,7 +16,7 @@ public class ShowListFunction {
 
         File file = new File(userHomeFolder, fileName + ".xlsx");
 
-        if(file.exists()){
+        try{
             FileInputStream inputStream = new FileInputStream(file);
 
             Workbook workbook = new XSSFWorkbook(inputStream);
@@ -51,8 +51,9 @@ public class ShowListFunction {
             workbook.close();
             inputStream.close();
         }
-        else{
-            System.out.println("\nNo such file exists!\n");
+        catch(IOException e){
+            
+            System.out.println("\nEither that file does not exist, or you still have it open!\n");
         }
 
     }

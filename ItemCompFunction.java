@@ -25,34 +25,50 @@ public class ItemCompFunction{
         // Creating file object of existing excel file
         File excelFile = new File(userHomeFolder, fileName + ".xlsx");
 
-        //Creating input stream
-        FileInputStream inputStream = new FileInputStream(excelFile);
-             
-        //Creating workbook from input stream
-        XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+        try{
+            
+            //Creating input stream
+            FileInputStream inputStream = new FileInputStream(excelFile);
+                
+            //Creating workbook from input stream
+            XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 
-        XSSFSheet sheet = workbook.getSheetAt(0);
+            XSSFSheet sheet = workbook.getSheetAt(0);
+
+            FileOutputStream os = new FileOutputStream(excelFile);
+            
+            XSSFCellStyle style = workbook.createCellStyle();
+            style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+            style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+
+            if(rowNum > 1){
+                for (int k = 0; k < sheet.getRow(rowNum - 1).getLastCellNum(); k++) {
+                    sheet.getRow(rowNum - 1).getCell(k).setCellStyle(style);
+                }
+                
+                //Close input stream
+                inputStream.close();
         
-        XSSFCellStyle style = workbook.createCellStyle();
-        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-        style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+                //Crating output stream and writing the updated workbook
+                workbook.write(os);
+                
+                //Close the workbook and output stream
+                workbook.close();
+                os.close();
 
-        for (int k = 0; k < sheet.getRow(rowNum - 1).getLastCellNum(); k++) {
-            sheet.getRow(rowNum - 1).getCell(k).setCellStyle(style);
-         }
+                System.out.println("\nTask has been marked has complete!\n");
+            }
+            else{
+                System.out.println("\nInvalid row number!\n");
+                workbook.write(os);
+                inputStream.close();
+                workbook.close();
+                os.close();
+            }
+        }
+        catch(IOException e){
 
-         //Close input stream
-         inputStream.close();
- 
-         //Crating output stream and writing the updated workbook
-         FileOutputStream os = new FileOutputStream(excelFile);
-         workbook.write(os);
-          
-         //Close the workbook and output stream
-         workbook.close();
-         os.close();
-
-         System.out.println("\nTask has been marked has complete!\n");
-
+            System.out.println("\nEither that file does not exist, or you still have it open!\n");
+        }
     }
 }
