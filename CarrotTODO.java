@@ -25,18 +25,18 @@ public class CarrotTODO {
                     System.out.print("Enter a command: ");
 
                     Scanner scanner = new Scanner(System.in);
-
+                    
                     String input = scanner.nextLine();
-                        
+
                     args = input.split(" ", 6);
+
 
                     //Create options object
                     Options options = CreateOptions();
 
                     //Create the parser and command line objects
                     CommandLineParser parser = new DefaultParser();
-
-                        
+    
                     cmd = parser.parse(options, args);
                             
 
